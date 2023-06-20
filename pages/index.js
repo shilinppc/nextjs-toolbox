@@ -13,14 +13,53 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title="Next.js Toolbox" />
-        <hr />
-        <p className="description">
-          Here's an example of a Netlify Form! When you fill this out, the
-          submissions can be found in the Netlify Admin site.
-        </p>
-        <FeedbackForm />
-        <JokeBlock />
+      import React from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+
+const Index = () => {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('/.netlify/functions/strategyFunction', data);
+      const strategy = response.data;
+      // Now you can do something with the received strategy, like updating your component's state
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Generate Digital Marketing Strategy</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label>Question 1:</label>
+          <select {...register("answer1")}>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            {/* Add as many options as needed */}
+          </select>
+        </div>
+
+       <div>
+          <label>Question 2:</label>
+          <select {...register("answer1")}>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option>
+             <option value="option5">Option 5</option>
+          </select>
+        </div>
+
+
+        <input type="submit" value="Generate Strategy" />
+      </form>
+    </div>
+  );
+};
+
+export default Index;
       </main>
       <Footer />
     </div>
