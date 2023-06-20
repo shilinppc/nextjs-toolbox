@@ -4,16 +4,7 @@ import Footer from "@components/Footer";
 import FeedbackForm from "@components/FeedbackForm";
 import JokeBlock from "@components/JokeBlock";
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Toolbox</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-      import React from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -35,29 +26,49 @@ const Index = () => {
       <h1>Generate Digital Marketing Strategy</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label>Question 1:</label>
-          <select {...register("answer1")}>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            {/* Add as many options as needed */}
+          <label>Specify the type of business:</label>
+          <select {...register("businessType")}>
+            <option value="Services">Services</option>
+            <option value="eCommerce">eCommerce</option>
           </select>
         </div>
 
-       <div>
-          <label>Question 2:</label>
-          <select {...register("answer1")}>
-            <option value="option3">Option 3</option>
-            <option value="option4">Option 4</option>
-             <option value="option5">Option 5</option>
+        <div>
+          <label>Specify industry:</label>
+          <select {...register("industry")}>
+            <option value="Apparel & Accessories">Apparel & Accessories</option>
+            <option value="Arts & Crafts Supplies">Arts & Crafts Supplies</option>
+            {/* Add other options as needed */}
+            <option value="Travel">Travel</option>
           </select>
         </div>
 
+        <div>
+          <label>Target area for marketing activities:</label>
+          <select {...register("targetArea")}>
+            <option value="Kyiv">Kyiv</option>
+            <option value="Ukraine">Ukraine</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Define your Goal:</label>
+          <select {...register("goal")}>
+            <option value="Leads">Leads</option>
+            <option value="Transactions">Transactions</option>
+            <option value="Income">Income</option>
+            <option value="ROAS">ROAS</option>
+          </select>
+        </div>
 
         <input type="submit" value="Generate Strategy" />
       </form>
     </div>
   );
 };
+
+export default Index;
+
 
 export default Index;
       </main>
