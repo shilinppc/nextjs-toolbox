@@ -71,8 +71,4 @@ export default Index;
 
 
 export default Index;
-      </main>
       <Footer />
-    </div>
-  );
-}
